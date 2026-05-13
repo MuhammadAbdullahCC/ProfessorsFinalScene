@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a0118">
+
+    <!-- Home screen WebView -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Cineby WebView container (hidden until user opens cineby) -->
+    <LinearLayout
+        android:id="@+id/cinebyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Auto-hiding top bar -->
+        <LinearLayout
+            android:id="@+id/cinebyTopBar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#CC0d0d1a"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <Button
+                android:id="@+id/cinebyHomeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="← HOME"
+                android:textColor="#ffffff"
+                android:backgroundTint="#e8008a"
+                android:textSize="11sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp" />
+
+            <Button
+                android:id="@+id/cinebyBackBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="‹"
+                android:textColor="#ffffff"
+                android:backgroundTint="#1a1a2e"
+                android:layout_marginStart="4dp"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/cinebyForwardBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="›"
+                android:textColor="#ffffff"
+                android:backgroundTint="#1a1a2e"
+                android:layout_marginStart="4dp"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/cinebyReloadBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="↻"
+                android:textColor="#00f0ff"
+                android:backgroundTint="#1a1a2e"
+                android:layout_marginStart="4dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cinebyUrlBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="#00f0ff"
+                android:textSize="11sp"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:text="cineby.app" />
+
+            <Button
+                android:id="@+id/cinebySaveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="★ SAVE"
+                android:textColor="#0d0d1a"
+                android:backgroundTint="#f5a623"
+                android:textSize="11sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp" />
+
+        </LinearLayout>
+
+        <!-- The actual cineby WebView fills remaining space -->
+        <WebView
+            android:id="@+id/cinebyWebView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- Fullscreen video container (sits above everything) -->
+    <FrameLayout
+        android:id="@+id/fullscreenContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+</FrameLayout>

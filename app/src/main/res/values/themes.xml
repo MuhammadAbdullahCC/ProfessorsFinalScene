@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.ProfessorsCinema" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/void_bg</item>
+        <item name="android:statusBarColor">@color/void_bg</item>
+        <item name="android:navigationBarColor">@color/void_bg</item>
+    </style>
+
+    <style name="Theme.ProfessorsCinema.Fullscreen" parent="Theme.ProfessorsCinema">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

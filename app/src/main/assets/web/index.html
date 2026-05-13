@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Professor's Cinema</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ANIMATED SUNSET BACKGROUND -->
+<div class="sun-grid">
+  <div class="sun"></div>
+  <div class="mountains"></div>
+  <div class="grid-floor"></div>
+  <div class="stars"></div>
+  <div class="scanlines"></div>
+</div>
+
+<!-- HOME SCREEN -->
+<div id="homeScreen" class="screen active">
+  
+  <header class="top-bar">
+    <div class="brand" tabindex="0" data-focusable>
+      <div class="brand-logo">
+        <svg viewBox="0 0 40 40" width="36" height="36">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff2a9e"/>
+              <stop offset="100%" stop-color="#00f0ff"/>
+            </linearGradient>
+          </defs>
+          <polygon points="20,3 37,12 37,28 20,37 3,28 3,12" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
+          <polygon points="20,11 29,16 29,24 20,29 11,24 11,16" fill="url(#logoGrad)" opacity="0.3"/>
+          <circle cx="20" cy="20" r="3" fill="url(#logoGrad)"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">PROFESSOR'S CINEMA</div>
+        <div class="brand-sub">// MADE BY BUTTER WITH LOVE</div>
+      </div>
+    </div>
+    
+    <nav class="top-nav">
+      <button class="nav-link active" data-focusable data-nav="home">HOME</button>
+      <button class="nav-link" data-focusable data-nav="continue">CONTINUE</button>
+      <button class="nav-link" data-focusable data-nav="saved">SAVED</button>
+      <button class="nav-link" data-focusable id="settingsBtn">SETTINGS</button>
+    </nav>
+    
+    <div class="status-strip">
+      <span class="status-dot"></span>
+      <span id="clockDisplay">--:--</span>
+    </div>
+  </header>
+
+  <main class="home-content">
+    
+    <!-- HERO BANNER -->
+    <section class="hero-banner" id="heroBanner">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dash"></span>
+          <span id="heroEyebrowText">WELCOME PROFESSOR</span>
+        </div>
+        <h1 class="hero-title" id="heroTitle">PICK UP WHERE<br>YOU LEFT OFF</h1>
+        <p class="hero-sub" id="heroSub">Your last session waits in the neon glow</p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="heroPrimaryBtn" data-focusable>
+            <span class="btn-icon">▶</span>
+            <span id="heroPrimaryText">OPEN CINEBY</span>
+          </button>
+          <button class="btn-secondary" id="heroSecondaryBtn" data-focusable>
+            <span class="btn-icon">↻</span>
+            <span>RESUME LAST</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-decoration">
+        <div class="hero-grid-corner"></div>
+      </div>
+    </section>
+
+    <!-- CONTINUE WATCHING -->
+    <section class="row" id="continueSection">
+      <div class="row-header">
+        <div class="row-title-block">
+          <span class="row-marker">◢</span>
+          <h2 class="row-title">CONTINUE WATCHING</h2>
+          <span class="row-count" id="continueCount">0</span>
+        </div>
+        <button class="row-action" id="clearHistoryBtn" data-focusable>CLEAR</button>
+      </div>
+      <div class="banner-grid" id="historyGrid">
+        <div class="empty-state">
+          <div class="empty-icon">▣</div>
+          <p>NO TRANSMISSIONS YET</p>
+          <span>Open Cineby to begin</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAVED -->
+    <section class="row" id="savedSection">
+      <div class="row-header">
+        <div class="row-title-block">
+          <span class="row-marker">◣</span>
+          <h2 class="row-title">SAVED FOR LATER</h2>
+          <span class="row-count" id="savedCount">0</span>
+        </div>
+      </div>
+      <div class="banner-grid" id="bookmarksGrid">
+        <div class="empty-state">
+          <div class="empty-icon">★</div>
+          <p>NO SAVED CONTENT</p>
+          <span>Hit save while watching to bookmark</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="hint-bar">
+    <div class="hint"><kbd>D-PAD</kbd> Navigate</div>
+    <div class="hint"><kbd>OK</kbd> Select</div>
+    <div class="hint"><kbd>BACK</kbd> Return</div>
+    <div class="hint"><kbd>MENU</kbd> Save current</div>
+  </footer>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div id="settingsModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title-block">
+        <span class="modal-marker">◆</span>
+        <h2>SYSTEM CONFIG</h2>
+      </div>
+      <button class="close-btn" id="closeSettingsBtn" data-focusable>×</button>
+    </div>
+    <div class="modal-body">
+      
+      <div class="setting-group">
+        <label>TMDB API KEY</label>
+        <p class="setting-help">
+          Free from themoviedb.org. Fetches banners, posters, and titles.
+        </p>
+        <div class="input-row">
+          <input type="text" id="apiKeyInput" placeholder="Paste your TMDB v3 API key">
+          <button class="btn-primary small" id="saveApiKeyBtn" data-focusable>SAVE</button>
+        </div>
+        <p class="setting-status" id="apiKeyStatus"></p>
+      </div>
+
+      <div class="setting-group">
+        <label>STARTING URL</label>
+        <p class="setting-help">
+          Default URL when opening Cineby. Change if the domain moves.
+        </p>
+        <div class="input-row">
+          <input type="text" id="startUrlInput" placeholder="https://www.cineby.app">
+          <button class="btn-primary small" id="saveStartUrlBtn" data-focusable>SAVE</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>DATA STORAGE</label>
+        <p class="setting-help">
+          Everything saves locally on this device. Survives restarts.
+        </p>
+        <div class="storage-path" id="storagePath">Loading...</div>
+      </div>
+
+      <div class="setting-group danger-zone">
+        <label>DANGER ZONE</label>
+        <p class="setting-help">
+          Wipes all watch history and bookmarks. Cannot be undone.
+        </p>
+        <button class="btn-danger" id="wipeAllBtn" data-focusable>WIPE ALL DATA</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRMATION DIALOG -->
+<div id="confirmDialog" class="modal">
+  <div class="modal-content small">
+    <div class="modal-body center">
+      <div class="confirm-icon">⚠</div>
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmMsg">This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button class="btn-secondary" id="confirmCancelBtn" data-focusable>CANCEL</button>
+        <button class="btn-danger" id="confirmOkBtn" data-focusable>CONFIRM</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
